@@ -160,6 +160,16 @@ namespace PCAmotor {
         setPwm((index - 1) * 2 + 1, 0, 0);
     }
 
+    //% blockId=magicbit_stepper_enable block="Stepper 28BYJ-48|%index|%dir"
+    //% weight=90
+    export function StepperEnable(index: Steppers, dir: boolean): void {
+        if (!initialized) {
+            initPCA9685()
+        }
+        
+        setStepper(index, dir);
+    }
+
     //% blockId=magicbit_stepper_degree block="Stepper 28BYJ-48|%index|degree %degree"
     //% weight=90
     export function StepperDegree(index: Steppers, degree: number): void {
